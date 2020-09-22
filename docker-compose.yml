@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  murmur:
+    container_name: murmur
+    build: .
+    ports:
+      - "64738:64738/tcp"
+      - "64738:64738/udp"
+    volumes:
+      - ./murmur-data:/murmur-data
+    environment:
+      - MURMUR_INI=/murmur-data/murmur.ini
+    restart: unless-stopped
